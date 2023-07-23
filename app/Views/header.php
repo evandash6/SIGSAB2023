@@ -11,11 +11,7 @@
 	<link href="<?=base_url()?>assets/css/apple/app.min.css" rel="stylesheet" />
 	<link href="<?=base_url()?>assets/plugins/ionicons/css/ionicons.min.css" rel="stylesheet" />
 	<!-- ================== END BASE CSS STYLE ================== -->
-	
 	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
-	<link href="<?=base_url()?>assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
-	<link href="<?=base_url()?>assets/plugins/bootstrap-calendar/css/bootstrap_calendar.css" rel="stylesheet" />
-	<link href="<?=base_url()?>assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
 	<link href="<?=base_url()?>assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
 	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
 </head>

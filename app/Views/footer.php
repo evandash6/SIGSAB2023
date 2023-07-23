@@ -65,11 +65,6 @@
 	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
 	<script src="<?=base_url()?>assets/plugins/d3/d3.min.js"></script>
 	<script src="<?=base_url()?>assets/plugins/nvd3/build/nv.d3.min.js"></script>
-	<script src="<?=base_url()?>assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
-	<script src="<?=base_url()?>assets/plugins/jvectormap-next/jquery-jvectormap-world-mill.js"></script>
-	<script src="<?=base_url()?>assets/plugins/bootstrap-calendar/js/bootstrap_calendar.min.js"></script>
-	<script src="<?=base_url()?>assets/plugins/gritter/js/jquery.gritter.js"></script>
-	<script src="<?=base_url()?>assets/js/demo/dashboard-v2.js"></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
 </body>
 </html>
