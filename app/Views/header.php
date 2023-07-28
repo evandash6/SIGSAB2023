@@ -8,11 +8,11 @@
 	<meta content="" name="author" />
 	
 	<!-- ================== BEGIN BASE CSS STYLE ================== -->
-	<link href="<?=base_url()?>assets/css/apple/app.min.css" rel="stylesheet" />
-	<link href="<?=base_url()?>assets/plugins/ionicons/css/ionicons.min.css" rel="stylesheet" />
+	<link href="/assets/css/apple/app.min.css" rel="stylesheet" />
+	<link href="/assets/plugins/ionicons/css/ionicons.min.css" rel="stylesheet" />
 	<!-- ================== END BASE CSS STYLE ================== -->
 	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
-	<link href="<?=base_url()?>assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+	<link href="/assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
 	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
 </head>
 <body>
@@ -28,7 +28,7 @@
 		<div id="header" class="header navbar-default">
 			<!-- begin navbar-header -->
 			<div class="navbar-header">
-				<a href="<?=base_url()?>" class="navbar-brand"><span class="navbar-logo"><i class="fa fa-tree"></i></span> <b class="mr-1">SIGSAB</b> 2023</a>
+				<a href="#" class="navbar-brand"><span class="navbar-logo"><i class="fa fa-tree"></i></span> <b class="mr-1">SIGSAB</b> 2023</a>
 				<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
