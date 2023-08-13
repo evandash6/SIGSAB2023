@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 	<meta charset="utf-8" />
-	<title>SIGSAB 2023</title>
+	<title>SIPSA 2023</title>
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
 	<meta content="" name="description" />
 	<meta content="" name="author" />
@@ -28,7 +28,7 @@
 		<div id="header" class="header navbar-default">
 			<!-- begin navbar-header -->
 			<div class="navbar-header">
-				<a href="#" class="navbar-brand"><span class="navbar-logo"><i class="fa fa-tree"></i></span> <b class="mr-1">SIGSAB</b> 2023</a>
+				<a href="<?=base_url()?>" class="navbar-brand"><span class="navbar-logo"><i class="fa fa-tree"></i></span> <b class="mr-1">SIPSA</b> 2023</a>
 				<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
