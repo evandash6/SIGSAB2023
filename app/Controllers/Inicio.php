@@ -5,7 +5,7 @@ namespace App\Controllers;
 class Inicio extends BaseController
 {
     private function links($arr){
-        $html = '<li class="breadcrumb-item active"><a href="#">SIGSAB 2023</a></li>';
+        $html = '<li class="breadcrumb-item active"><a href="#">SIPSA 2023</a></li>';
         $end = end($arr);
         foreach ($arr as $key => $value) {
             if ($value === $end) {

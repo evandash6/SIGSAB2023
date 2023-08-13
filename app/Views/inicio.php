@@ -12,6 +12,13 @@
 					</div> -->
 				</div>
 				<div class="panel-body">
-					Panel Content Here
+					
+					<div class="row">
+						<div class="col-md-4 bg-success">
+							man
+						</div>
+					</div>
+
+
 				</div>
 			</div>
