@@ -21,8 +21,8 @@ class Inicio extends BaseController
     public function index(){
         $data['titulo'] = 'Inicio';
         $data['descripcion'] = 'Descripción del menu inicio';
-        $data['icono'] = '';
-        $data['m_inicio']= 'activo';
+        $data['icono'] = 'fa fa-users';
+        $data['m_usuarios']= 'activo';
         $data['links'] = $this->links(array('Inicio'=>base_url()));
         echo view('header',$data);
         echo view('inicio');
