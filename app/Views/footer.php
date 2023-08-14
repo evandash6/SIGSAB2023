@@ -57,14 +57,7 @@
 	</div>
 	<!-- end page container -->
 	
-	<!-- ================== BEGIN BASE JS ================== -->
-	<script src="/assets/js/app.js"></script>
-	<script src="/assets/js/theme/apple.min.js"></script>
-	<!-- ================== END BASE JS ================== -->
 	
-	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
-	<script src="/assets/plugins/d3/d3.min.js"></script>
-	<script src="/assets/plugins/nvd3/build/nv.d3.min.js"></script>
 	<!-- ================== END PAGE LEVEL JS ================== -->
 </body>
 </html>

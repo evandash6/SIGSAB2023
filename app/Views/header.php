@@ -14,6 +14,14 @@
 	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
 	<link href="/assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
 	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+	<!-- ================== BEGIN BASE JS ================== -->
+	<script src="<?=base_url()?>assets/js/app.js"></script>
+	<script src="<?=base_url()?>assets/js/theme/apple.min.js"></script>
+	<!-- ================== END BASE JS ================== -->
+	
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<script src="<?=base_url()?>assets/plugins/d3/d3.min.js"></script>
+	<script src="<?=base_url()?>assets/plugins/nvd3/build/nv.d3.min.js"></script>
 </head>
 <body>
 	<!-- begin #page-loader -->
@@ -136,8 +144,8 @@
 						<input type="text" class="form-control" placeholder="Buscar en menu.." data-sidebar-search="true">
 					</li>
                     <li class="nav-header">Administración</li>
-                    <li class="has-sub">
-						<a href="javascript:;">
+                    <li class="has-sub <?=(isset($m_usuarios))?$m_usuarios:''?>">
+						<a href="<?=base_url()?>/administracion/usuarios">
 							<i class="fa fa-users bg-pink"></i>
 							<span>Usuarios</span>
 						</a>

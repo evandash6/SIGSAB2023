@@ -17,8 +17,11 @@ class Login extends BaseController{
             'format' => ""]);
     }
     public function index(){
-        return view('login');
-        //echo $this->api->post('consulta_tabla',array('tabla'=>'usuarios'))->response;
+        echo "formulario de login";   
+    }
+
+    public function usuarios(){
+        echo $this->api->post('consulta_tabla',array('tabla'=>'usuarios'))->response;
     }
 
     //Funcion para validación de usuarios a traves de la API CONAFOR
