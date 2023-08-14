@@ -1,6 +1,3 @@
-
-			
-
 <div class="panel panel-inverse">
 				<div class="panel-heading">
 					<h4 class="panel-title">Panel Title here</h4>
