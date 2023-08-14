@@ -17,6 +17,10 @@ class Login extends BaseController{
             'format' => ""]);
     }
     public function index(){
+        echo "formulario de login";   
+    }
+
+    public function usuarios(){
         echo $this->api->post('consulta_tabla',array('tabla'=>'usuarios'))->response;
     }
 
