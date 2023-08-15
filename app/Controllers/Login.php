@@ -31,19 +31,8 @@ class Login extends BaseController{
         return $html;
     }
 
-    public function index(){
-      /*   $data['usuarios'] = json_encode(array());
-        $data['titulo'] = 'Administración - Usuarios';
-        $data['descripcion'] = 'Módulo de administración de usuarios';
-        $data['icono'] = 'fa fa-users';
-        $data['m_usuarios']= 'active';
-        $data['links'] = $this->links(array('Usuarios'=>base_url().'administracion/usuarios'));
-        echo view('header',$data); */
-        //echo view ('login\login');
-        //echo view('footer');
-        //echo view('funciones'); 
-        return view ('login/login');
-        //echo "formulario de login";   
+    public function index(){ 
+        echo view ('login/login'); 
     }
 
     public function usuarios(){
