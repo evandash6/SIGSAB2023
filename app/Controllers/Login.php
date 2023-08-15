@@ -16,8 +16,34 @@ class Login extends BaseController{
             'headers' => ['Ephylone'=>'sipsa'],
             'format' => ""]);
     }
+
+    private function links($arr){
+        $html = '<li class="breadcrumb-item active"><a href="#">SIPSA 2023</a></li>';
+        $end = end($arr);
+        foreach ($arr as $key => $value) {
+            if ($value === $end) {
+                $html .= '<li class="breadcrumb-item active"><a href="'.$value.'">'.$key.'</a></li>';
+            }
+            else{
+                $html .= '<li class="breadcrumb-item"><a href="'.$value.'">'.$key.'</a></li>';
+            }
+        }
+        return $html;
+    }
+
     public function index(){
-        echo "formulario de login";   
+      /*   $data['usuarios'] = json_encode(array());
+        $data['titulo'] = 'Administración - Usuarios';
+        $data['descripcion'] = 'Módulo de administración de usuarios';
+        $data['icono'] = 'fa fa-users';
+        $data['m_usuarios']= 'active';
+        $data['links'] = $this->links(array('Usuarios'=>base_url().'administracion/usuarios'));
+        echo view('header',$data); */
+        //echo view ('login\login');
+        //echo view('footer');
+        //echo view('funciones'); 
+        return view ('login/login');
+        //echo "formulario de login";   
     }
 
     public function usuarios(){
