@@ -1,3 +1,4 @@
+<?Php $session = session(); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,20 +9,22 @@
 	<meta content="" name="author" />
 	
 	<!-- ================== BEGIN BASE CSS STYLE ================== -->
-	<link href="assets/css/apple/app.min.css" rel="stylesheet" />
-	<link href="assets/plugins/ionicons/css/ionicons.min.css" rel="stylesheet" />
+	<link href="<?=base_url()?>/assets/css/apple/app.min.css" rel="stylesheet" />
+	<link href="<?=base_url()?>/assets/plugins/ionicons/css/ionicons.min.css" rel="stylesheet" />
 	<!-- ================== END BASE CSS STYLE ================== -->
 	<!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
-	<link href="assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+	<link href="<?=base_url()?>/assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
 	<!-- ================== END PAGE LEVEL CSS STYLE ================== -->
 	<!-- ================== BEGIN BASE JS ================== -->
-	<script src="assets/js/app.js"></script>
-	<script src="assets/js/theme/apple.min.js"></script>
+	<script src="<?=base_url()?>/assets/js/app.js"></script>
+	<script src="<?=base_url()?>/assets/js/theme/apple.min.js"></script>
 	<!-- ================== END BASE JS ================== -->
 	
 	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
-	<script src="assets/plugins/d3/d3.min.js"></script>
-	<script src="assets/plugins/nvd3/build/nv.d3.min.js"></script>
+	<script src="<?=base_url()?>/assets/plugins/d3/d3.min.js"></script>
+	<script src="<?=base_url()?>/assets/plugins/nvd3/build/nv.d3.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+	<script src="<?=base_url()?>/assets/js/lottie.js" type="text/javascript"></script>
 </head>
 <body>
 	<!-- begin #page-loader -->
@@ -36,7 +39,7 @@
 		<div id="header" class="header navbar-default">
 			<!-- begin navbar-header -->
 			<div class="navbar-header">
-				<a href="" class="navbar-brand"><span class="navbar-logo"><i class="fa fa-tree"></i></span> <b class="mr-1">SIPSA</b> 2023</a>
+				<a href="<?=base_url()?>" class="navbar-brand"><span class="navbar-logo"><i class="fa fa-tree"></i></span> <b class="mr-1">SIPSA</b> 2023</a>
 				<button type="button" class="navbar-toggle" data-click="sidebar-toggled">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -63,7 +66,7 @@
 						</a>
 						<!-- <a href="javascript:;" class="dropdown-item media">
 							<div class="media-left">
-								<img src="assets/img/user/user-1.jpg" class="media-object" alt="" />
+								<img src="<?=base_url()?>assets/img/user/user-1.jpg" class="media-object" alt="" />
 								<i class="fab fa-facebook-messenger text-blue media-object-icon"></i>
 							</div>
 							<div class="media-body">
@@ -74,7 +77,7 @@
 						</a>
 						<a href="javascript:;" class="dropdown-item media">
 							<div class="media-left">
-								<img src="assets/img/user/user-2.jpg" class="media-object" alt="" />
+								<img src="<?=base_url()?>assets/img/user/user-2.jpg" class="media-object" alt="" />
 								<i class="fab fa-facebook-messenger text-blue media-object-icon"></i>
 							</div>
 							<div class="media-body">
@@ -122,18 +125,18 @@
 						<a href="javascript:;" data-toggle="nav-profile">
 							<div class="cover with-shadow"></div>
 							<div class="image">
-								<img src="assets/img/user/user-13.jpg" alt="" />
+								<img src="<?=base_url()?>assets/img/user/user-13.jpg" alt="" />
 							</div>
 							<div class="info">
-								<b class="caret pull-right"></b>NOMBRE USUARIO
-								<small>PUESTO USUARIO</small>
+								<b class="caret pull-right"></b><?=$session->nombre?>
+								<small><?=$session->email?></small>
 							</div>
 						</a>
 					</li>
 					<li>
 						<ul class="nav nav-profile">
 							<li><a href="javascript:;"><i class="fa fa-cog"></i> Perfil</a></li>
-							<li><a href="javascript:;"><i class="fa fa-power-off"></i> Salir</a></li>
+							<li><a href="<?=base_url()?>login/salir"><i class="fa fa-power-off"></i> Salir</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -145,7 +148,7 @@
 					</li>
                     <li class="nav-header">Administración</li>
                     <li class="has-sub <?=(isset($m_usuarios))?$m_usuarios:''?>">
-						<a href="/administracion/usuarios">
+						<a href="administracion/usuarios">
 							<i class="fa fa-users bg-pink"></i>
 							<span>Usuarios</span>
 						</a>
@@ -164,7 +167,7 @@
 							<span>Inicio</span>
 						</a>
 						<!-- <ul class="sub-menu">
-							<li><a href="">INicio v1</a></li>
+							<li><a href="<?=base_url()?>">INicio v1</a></li>
 							<li class="active"><a href="index_v2.html">Dashboard v2</a></li>
 							<li><a href="index_v3.html">Dashboard v3</a></li>
 						</ul> -->

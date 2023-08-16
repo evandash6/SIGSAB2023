@@ -2,8 +2,22 @@
 
 namespace App\Controllers;
 
-class Inicio extends BaseController
-{
+class Inicio extends BaseController{
+
+    private function seguridad(){      
+        $session = session();
+        if(!$session->email != null || !$session->email != ''){
+            $this->salir();
+        }
+    }
+
+    public function salir(){
+        $session = session();
+        $session->destroy();
+        header('Location: /public/login');
+        exit;
+    }
+    
     private function links($arr){
         $html = '<li class="breadcrumb-item active"><a href="#">SIPSA 2023</a></li>';
         $end = end($arr);
@@ -19,6 +33,7 @@ class Inicio extends BaseController
     }
 
     public function index(){
+        $this->seguridad();
         $data['titulo'] = 'Inicio';
         $data['descripcion'] = 'Descripción del menu inicio';
         $data['icono'] = 'fa fa-users';

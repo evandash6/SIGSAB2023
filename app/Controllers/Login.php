@@ -17,26 +17,17 @@ class Login extends BaseController{
             'format' => ""]);
     }
 
-    private function links($arr){
-        $html = '<li class="breadcrumb-item active"><a href="#">SIPSA 2023</a></li>';
-        $end = end($arr);
-        foreach ($arr as $key => $value) {
-            if ($value === $end) {
-                $html .= '<li class="breadcrumb-item active"><a href="'.$value.'">'.$key.'</a></li>';
-            }
-            else{
-                $html .= '<li class="breadcrumb-item"><a href="'.$value.'">'.$key.'</a></li>';
-            }
+    private function seguridad(){      
+        $session = session();
+        if(!$session->email != null || !$session->email != ''){
+            $this->salir();
         }
-        return $html;
     }
 
-    public function index(){ 
-        echo view ('login/login'); 
-    }
-
-    public function usuarios(){
-        echo $this->api->post('consulta_tabla',array('tabla'=>'usuarios'))->response;
+    public function index(){
+        echo view('login/header');
+        echo view('funciones');
+        echo view('login/login');
     }
 
     //Funcion para validación de usuarios a traves de la API CONAFOR
@@ -44,7 +35,6 @@ class Login extends BaseController{
         $usuario = $_POST['usuario'];
         $password = $_POST['password'];
         $res = json_decode($this->api->post('autorizacion',array('usuario'=>$usuario,'password'=>$password))->response);
-        // var_dump($res);
         if($res->status == 200){
             $usu = json_decode($this->api->post('consulta_tabla',array('tabla'=>'usuarios','condicion[email]'=>$usuario,'condicion[activo]'=>1))->response);
             if($usu->totalregistros>0){
@@ -54,7 +44,7 @@ class Login extends BaseController{
                 $session->set('nombre',$res->datos->nombre);
                 $session->set('email',$res->datos->email);
                 $session->set('perfil_id',$usu->resultado[0]->perfil_id);
-                // header('Location: '.base_url().'/Administracion');
+                echo json_encode(array('status'=>201));
                 exit;
             }
             else{
@@ -63,21 +53,26 @@ class Login extends BaseController{
                 $arr['email'] =$res->datos->email;
                 $arr['fecha_registro'] = date('Y-m-d H:i:s');
                 $res2 = $this->api->post('insertar/usuarios',$arr)->response;
-                // echo view('previos/header');
-                // echo view('previos/aviso');
+                echo json_encode(array('status'=>203));
             }     
         }
         else{
-            // header('Location: '.base_url().'/login');
+            echo json_encode(array('status'=>401,'msg'=>'Credenciales Incorrectas..!'));
             exit;
         }
+    }
+
+    public function previos(){
+        echo view('previos/header');
+        echo view('previos/aviso');
+        // echo view('previos/footer');
     }
 
     //Funcion para salir y eliminar la session de usuario
     public function salir(){
         $session = session();
         $session->destroy();
-        // echo view('');
+        header('Location: /public/login');
         exit;
     }
 }

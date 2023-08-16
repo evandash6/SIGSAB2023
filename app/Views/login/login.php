@@ -1,53 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>SIPSA | 2023</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/login/css/main.css">
-    <!-- ================== BEGIN BASE CSS STYLE ================== -->
-	<link href="assets/css/apple/app.min.css" rel="stylesheet" />
-<!--===============================================================================================-->
-</head>
-<body >
 	<div class="wrap-login100" >
-        <div class="col-md-4 " >
-            <form class="validate-form ">
-		    	<div class="containers login100-form ">
+        <div class="col-md-5"> 
+            <form class="validate-form" id="frm">
+		    	<div class="containers">
 		    	  <div class="top"></div>
 		    	  <div class="bottom"></div>
 		    	  <div class="centers">
-		    	    <h2>SIPSA</h2>
-		    	    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-		    			  <input class="input100" autocomplete="off" type="text" name="email">
-		    			  <span class="focus-input100"></span>
-		    			  <span class="label-input100">Email</span>
-		    		  </div>
-		    		  <div class="wrap-input100 validate-input" data-validate="Password is required">
-		    		  	<input class="input100" autocomplete="new-password" type="password" name="pass">
-		    		  	<span class="focus-input100"></span>
-		    		  	<span class="label-input100">Password</span>
-		    		  </div>
-		    		  <div class="container-login100-form-btn">
-		    		  	<button class="login100-form-btn">
-		    		  		Iniciar Sesión
-		    		  	</button>
-		    		  </div>
-		    	    <h2>&nbsp;</h2>
+                  <h1 class="text-center">Inicio de Sesión</h1>
+                  <br>
+                    <label>Usuario:</label>
+                    <input name="usuario" type="email">
+                    <br>
+                    <label>Contraseña:</label>
+                    <input name="password" type="password">
+                    <br><br>
+                    <button type="button" class="btn btx_send btn-secondary btn-lg">Entrar</button>
+                    <br><br>
 		    	  </div>
 		    	</div>
 		    </form>
         </div>
-        <div class="col-md-8 login100-more"  style="background-image: url('assets/login/images/bg.jpg');">
+        <div class="col-md-7 login100-more"  style="background-image: url('assets/login/images/bg.jpg');padding-right:0px !important">
+        <section class="layout">
+            <div class=""></div>
+            <div class=""></div>
+            <div class=""></div>
+            <div class=""></div>
+            <div class=""></div>
+            <div class="bg-white pl-4 pt-2 pb-2">
+                <div class="row">
+                    <div class="col-md-6"><img  class="img-fluid cinta_logo" src="assets/img/conafor.png" alt=""></div>
+                    <div class="col-md-6 mt-4 text-center"><h1>SIPSA - 2023</h1></div>
+                </div>
+                
+            </div>
+        </section>
+			
         </div>
     </div>
 <!--===============================================================================================-->
-	<script src="assets/login/vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script src="assets/login/js/main.js"></script>
-</body>
-</html>
+    <script>
+
+        $('body').on('click','.btx_send',function(){
+            let forms = $('#frm');
+            if(forms[0].reportValidity() === false){
+                forms[0].classList.add('was-validated');
+            }
+            else{
+                let formData = new FormData(forms[0]);
+                api.post('<?=base_url()?>/login/validar',formData,true,false)
+                .done(function(data){
+                    let res = JSON.parse(data);
+                    if(res.status == 201){
+                        location.href = 'inicio'
+                    }
+                    else if(res.status == 203){
+                        location.href = 'login/previos';
+                    }
+                    else{
+                        console.log(res.msg);
+                        alert('Error',res.msg,'error');
+                    }
+                })
+                .fail(function(res){
+                    console.log(res)
+                })
+            }
+        })
+    </script>
 
 
 

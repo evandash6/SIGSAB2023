@@ -17,6 +17,21 @@ class Administracion extends BaseController{
             'format' => ""]);
     }
 
+    //Funcion para salir y eliminar la session de usuario
+    public function salir(){
+        $session = session();
+        $session->destroy();
+        // echo view('');
+        exit;
+    }
+
+    private function seguridad(){      
+        $session = session();
+        if(!$session->email != null || !$session->email != ''){
+            $this->salir();
+        }
+    }
+
     private function links($arr){
         $html = '<li class="breadcrumb-item active"><a href="#">SIPSA 2023</a></li>';
         $end = end($arr);
@@ -41,17 +56,28 @@ class Administracion extends BaseController{
         $data['descripcion'] = 'Módulo de administración de usuarios';
         $data['icono'] = 'fa fa-users';
         $data['m_usuarios']= 'active';
+        $data['perfiles_opc'] = $this->api->post('crea_select',array('tabla'=>'c_perfiles','condicion'=>' activo=1 ORDER BY nombre'))['opciones'];
         $data['links'] = $this->links(array('Usuarios'=>base_url().'administracion/usuarios'));
         echo view('header',$data);
         echo view('administracion/usuarios');
         echo view('footer');
         echo view('funciones');
     }
-    //Funcion para salir y eliminar la session de usuario
-    public function salir(){
-        $session = session();
-        $session->destroy();
-        // echo view('');
-        exit;
+
+    public function  muestra_usuarios(){
+        echo $this->api->post('consulta_tabla',array('tabla'=>'vw_usuarios'))->response;
+    }
+
+    public function activa_usuarios($id,$val){
+        $this->seguridad();
+        $val = ($val==1)?0:1;
+        echo $this->api->post('actualizar/usuarios',array('datos[activo]'=>$val,'condicion[id]'=>$id))->response;
+    }
+
+    public function actualiza_usuarios(){
+        $this->seguridad();
+        $id = $_POST['id'];
+        unset($_POST['id']);
+        echo $this->api->post('actualizar/usuarios',array('datos'=>$_POST,'condicion[id]'=>$id))->response;
     }
 }

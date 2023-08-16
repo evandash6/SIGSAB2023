@@ -68,14 +68,23 @@
     async function cargando(t=0,fn=function(){},view=1){
         if(view==1){
             Swal.fire({
-            html: '<div class="row"><div class="col-md-12"><img style="max-width:150px" src="<?=base_url()?>/frontend/img/spinner.gif" class="img"></div><div class="col-md-12"><p style="font-size:20px"><b id="mdl_txt_carga">Cargando..</b></p></div></div>',
+            html: '<div class="row"><div class="col-md-12 text-center"><div id="lottie-container"></div></div><div class="col-md-12"><p style="font-size:20px"><b id="mdl_txt_carga">Cargando..</b></p></div></div>',
             showConfirmButton: false,
             allowOutsideClick: false,
-            allowEscapeKey: false
+            allowEscapeKey: false,
+            width:300
             })
+            lottie.loadAnimation({
+                container: document.getElementById('lottie-container'), // the dom element that will contain the animation
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                path: '../assets/load.json' // the path to the animation json
+            });
             if(t > 0){
             await sleep(t*1000);
             Swal.close();
+            lottie.stop();
             fn();
             }
         }
@@ -111,7 +120,9 @@
                 contentType: false,
                 processData: false,
                 cache: false
-            }).done(function(){ swal.close()});
+            }).done(function(){ 
+                swal.close()
+            });
         },
         post: function (url,data,activo=false,load=true,espera=true,cierre=true){
             if(activo){
@@ -145,18 +156,7 @@
                 });
             }
         }
-    }; 
-
-    //Obtener valor de localstorage
-    function getlocal(d){
-        return localStorage.getItem(d);
-    }
-
-    //asignar valor a un localstorage
-    function setlocal(d,v){
-        localStorage.setItem(d,v);
-    }
-
+    };
     
     //Funcion generica para el envio de datos de un formulario
     function sendform(id,url,e,fn1=function(){}){
