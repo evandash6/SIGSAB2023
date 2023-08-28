@@ -148,13 +148,13 @@
 					</li>
                     <li class="nav-header">Administración</li>
                     <li class="has-sub <?=(isset($m_usuarios))?$m_usuarios:''?>">
-						<a href="administracion/usuarios">
+						<a href="/administracion/usuarios">
 							<i class="fa fa-users bg-pink"></i>
 							<span>Usuarios</span>
 						</a>
 					</li>
-					<li class="has-sub">
-						<a href="javascript:;">
+					<li class="has-sub <?=(isset($m_importacion))?$m_importacion:''?>">
+						<a href="/administracion/importacion">
 							<i class="fa fa-cloud-download-alt bg-info"></i>
 							<span>Importación Datos</span>
 						</a>

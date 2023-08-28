@@ -80,4 +80,19 @@ class Administracion extends BaseController{
         unset($_POST['id']);
         echo $this->api->post('actualizar/usuarios',array('datos'=>$_POST,'condicion[id]'=>$id))->response;
     }
+
+    public function importacion(){
+        // $data['usuarios'] = $this->api->post('consulta_tabla',array('tabla'=>'usuarios'))->response;
+        $data['usuarios'] = json_encode(array());
+        $data['titulo'] = 'Administración - Importación de Datos';
+        $data['descripcion'] = 'Módulo de Importación de Datos';
+        $data['icono'] = 'fa fa-users';
+        $data['m_importacion']= 'active';
+        $data['perfiles_opc'] = $this->api->post('crea_select',array('tabla'=>'c_perfiles','condicion'=>' activo=1 ORDER BY nombre'))['opciones'];
+        $data['links'] = $this->links(array('Usuarios'=>base_url().'administracion/importacion'));
+        echo view('header',$data);
+        echo view('administracion/importacion');
+        echo view('footer');
+        echo view('funciones');
+    }
 }
